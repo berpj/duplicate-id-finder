@@ -1,2 +1,2 @@
-# find-duplicate-ids
-Find duplicate IDs
+# Find duplicate CSS IDs
+
