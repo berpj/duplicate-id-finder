@@ -1,2 +1,2 @@
-# Find duplicate CSS IDs
+# Find duplicate HTML IDs
 
