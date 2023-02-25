@@ -1,6 +1,6 @@
 {
   "name": "Duplicate ID Finder",
-  "version": "1.0",
+  "version": "1.5",
   "description": "Finds all duplicate HTML IDs on the current page",
   "manifest_version": 3,
   "icons": {
