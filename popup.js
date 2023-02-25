@@ -43,11 +43,11 @@ chrome.runtime.sendMessage({ type: "updateDuplicateIds" }, function (response) {
 // Content script to find and highlight elements
 function findAndHighlightElements(id) {
     const elements = document.querySelectorAll(id);
-    elements.forEach(el => el.classList.add('duplicate-ids-checker-highlight'));
+    elements.forEach(el => el.classList.add('duplicate-id-finder-highlight'));
 }
   
   // Content script to find and unhighlight elements
 function findAndUnhighlightElements(id) {
     const elements = document.querySelectorAll(id);
-    elements.forEach(el => el.classList.remove('duplicate-ids-checker-highlight'));
+    elements.forEach(el => el.classList.remove('duplicate-id-finder-highlight'));
 }

@@ -4,6 +4,11 @@ var globalDuplicateIds = [];
 chrome.tabs.onActivated.addListener(function () {
   chrome.tabs.query({ currentWindow: true, active: true }, function (tabs) {
     if (tabs[0] && tabs[0].url && !tabs[0].url.includes("chrome://")) {
+      chrome.scripting.insertCSS({
+        target: { tabId: tabs[0].id },
+        files: ['duplicate-id-finder-highlight.css']
+      });
+
       chrome.scripting.executeScript({
         target: { tabId: tabs[0].id },
         function: countDuplicateIds,
@@ -21,7 +26,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
       if (changeInfo.status === "complete") {
         chrome.scripting.insertCSS({
             target: { tabId: tab.id },
-            files: ['duplicate-ids-checker-hightlight.css']
+            files: ['duplicate-id-finder-highlight.css']
         });
 
         chrome.scripting.executeScript({
@@ -29,7 +34,7 @@ chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
           function: countDuplicateIds
         }).then((results) => { updateBadge(results) });
       }
-    } else if (tab.url.includes("chrome://")) {
+    } else if (tab && tabs[0].id == tabId && tab.url && tab.url.includes("chrome://")) {
       updateBadge([{ result: { count: 0, ids: [] } }], tab)
     }
   });

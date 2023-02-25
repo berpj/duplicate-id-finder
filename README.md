@@ -1,2 +1,1 @@
-# Find duplicate HTML IDs
-
+# Duplicate ID Finder
